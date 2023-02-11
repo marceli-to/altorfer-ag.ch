@@ -6,4 +6,5 @@
 /var/log/*
 /var/session/*
 /var/cache/*
+/var/var/*
 /public/typo3conf/LocalConfiguration.php
