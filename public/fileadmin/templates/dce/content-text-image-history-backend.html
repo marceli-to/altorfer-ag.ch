@@ -1,0 +1,32 @@
+
+<style>
+	h1 {
+		font-size: 16px;
+		font-weight: bold;
+		margin: 0 0 10px 0;
+	}
+	h2, h3 {
+		font-size: 12px;
+		font-weight: bold;
+		margin: 0;
+	}
+</style>
+<div>
+	<f:if condition="{field.title}">
+		<h1>{field.title}</h1>
+	</f:if>
+	<f:if condition="{field.text}">
+		<f:format.html>{field.text}</f:format.html>
+	</f:if>
+	<f:if condition="{field.image}">
+	<f:for each="{field.image}" as="img">
+		<img src="{f:uri.image(src: '{img.uid}', treatIdAsReference: 1)}" width="300c">
+	</f:for>
+	<br><br>
+	</f:if>
+	<hr style="height: 1px; line-height: 1; background-color: #ddd; width: 100%; padding: 0; margin: 10px 0;">
+	Ausrichtung: {f:if(condition: '{field.orientation} == "is-ltr"', then: 'rechts', else: 'links')}<br>
+	Offset: <f:if condition="{field.offset} == 'none'">ohne</f:if><f:if condition="{field.offset} == 'is-offset-bottom'">unten</f:if><f:if condition="{field.offset} == 'is-offset-top'">oben</f:if><br>
+	Hintergrund: <f:if condition="{field.theme} == 'is-white'">transparent</f:if><f:if condition="{field.theme} == 'is-blue'">blau</f:if><f:if condition="{field.theme} == 'is-grey'">grau</f:if><br>
+</div>
+

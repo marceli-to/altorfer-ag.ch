@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-10-06T13:57:47Z" product-name="rte_config">
+		<header/>
+		<body>
+			<trans-unit id="tx_rteconfig_domain_model_rte">
+				<source>Rte</source>
+			</trans-unit>
+			<trans-unit id="tx_rteconfig_domain_model_rte.name">
+				<source>Name</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

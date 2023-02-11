@@ -1,0 +1,26 @@
+
+<section class="box-text box-text--team">
+  <div class="cf">
+    <div class="text__content">
+      <div>
+        <h2>{field.department}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="grid-2xs_3sm_4md">
+	<f:for each="{field.members}" as="member">
+	    <figure class="span team-member">
+			<f:for each="{member.image}" as="img">
+				<f:image image="{img}" alt="{member.firstname} {member.name}" width="800c" height="1000c" />
+			</f:for>
+			<figcaption>
+				<h3>{member.firstname} {member.name}</h3>
+				<f:format.html>{member.info}</f:format.html>
+			</figcaption>
+	    </figure>
+	</f:for>
+  </div>
+</section>
+
+
+

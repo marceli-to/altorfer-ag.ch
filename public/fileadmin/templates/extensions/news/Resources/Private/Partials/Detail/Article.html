@@ -1,0 +1,104 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{newsItem.mediaPreviews.0}">
+	<f:then>
+	    <header 
+		    class="section-header section-header--news" 
+		    style="background-image:url({f:uri.image(src: '{newsItem.mediaPreviews.0.uid}', treatIdAsReference: 1, width: '1600c')});">
+			<h1>News</h1>
+			<n:simplePrevNext pidList="{newsItem.pid}" news="{newsItem}" as="paginated" sortField="datetime">
+				<f:if condition="{paginated}">
+					<div class="btns-prev-next btns-prev-next--content">
+						<f:if condition="{paginated.next}">
+							<f:then>
+								<n:link newsItem="{paginated.next}" settings="{settings}" class="btn btn--prev">&nbsp;</n:link>
+							</f:then>
+							<f:else>
+								<a href="javascript:;" class="btn btn--prev is-disabled"></a>
+							</f:else>
+						</f:if>
+						<f:if condition="{paginated.prev}">
+							<f:then>
+								<n:link newsItem="{paginated.prev}" settings="{settings}" class="btn btn--next">&nbsp;</n:link>
+							</f:then>
+							<f:else>
+								<a href="javascript:;" class="btn btn--next is-disabled"></a>
+							</f:else>
+						</f:if>
+					</div>
+				</f:if>
+			</n:simplePrevNext>
+	    </header>
+	</f:then>
+	<f:else>
+	    <header 
+		    class="section-header section-header--news" 
+		    style="background-image:url('/fileadmin/assets/img/dummy-3.jpg');">
+	      <h1>News</h1>
+	    </header>    	
+	</f:else>
+</f:if>
+<div class="section-content">
+  <div class="section-content__main">
+	<span class="news-date">
+		<f:format.date format="d.m.Y">{newsItem.datetime}</f:format.date>
+	</span>
+	<f:if condition="{newsItem.alternativeTitle}">
+		<f:then>
+			<h2><f:format.htmlentitiesDecode>{newsItem.alternativeTitle}</f:format.htmlentitiesDecode></h2>
+		</f:then>
+		<f:else>
+			<h2><f:format.htmlentitiesDecode>{newsItem.title}</f:format.htmlentitiesDecode></h2>
+		</f:else>
+	</f:if>
+	<p class="txt-intro">{newsItem.teaser}</p>
+	<f:format.html>{newsItem.bodytext}</f:format.html>
+	<f:if condition="{newsItem.mediaNonPreviews}">
+		
+		<div class="swiper-container js-slider">
+			<div class="swiper-wrapper">
+				<f:for each="{newsItem.mediaNonPreviews}" as="media" iteration="i">
+					<f:if condition="{i.cycle} > 1">
+					<figure class="swiper-slide">
+						<f:image image="{media}" title="{media.title}" alt="{media.alternative}" width="960c" height="540c" />
+					</figure>
+					</f:if>
+				</f:for>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>		
+		
+
+	</f:if>
+	<f:if condition="{settings.detail.showPrevNext}">
+		<n:simplePrevNext pidList="{newsItem.pid}" news="{newsItem}" as="paginated" sortField="datetime">
+			<f:if condition="{paginated}">
+				<div class="news-pagination">
+					<f:if condition="{paginated.prev}">
+						<strong>Nächster Artikel</strong>
+						<n:link newsItem="{paginated.prev}" settings="{settings}">
+							<h3>{paginated.prev.title}</h3>
+							<span>Lesen</span>
+						</n:link>
+					</f:if>
+				</div>
+			</f:if>
+		</n:simplePrevNext>
+	</f:if>	
+  </div>
+  
+  <f:if condition="{newsRecords}">
+      <nav class="section-content__nav nav-news">
+	      <ul>
+	      	<f:for each="{newsRecords}" as="n" iteration="i">
+	      		<li>
+		  			<n:link newsItem="{n}" settings="{settings}" title="{n.title}" class="{f:if(condition:'{n.uid} == {newsItem.uid}',then:'is-active',else:'')}">
+		  				<span><f:format.date format="d.m.Y">{n.datetime}</f:format.date></span>
+		  				{n.title -> f:format.crop(maxCharacters: '32', respectWordBoundaries:'0')}
+		  			</n:link>
+				</li>
+	      	</f:for>
+	      </ul>
+      </nav>
+  </f:if>
+</div>
+</html>

@@ -1,0 +1,12 @@
+
+<section class="box-text {f:if(condition: '{field.orientation} == "0"', then: 'is-left', else: 'is-right')} {f:if(condition: '{field.space} == "1"', then: 'is-narrow', else: '')}">
+  <div class="text__content">
+    <div>
+      <h1>{field.title}</h1>
+      <f:if condition="{field.text}">
+      	<f:format.html>{field.text}</f:format.html>
+      </f:if>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,35 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{newsItem.mediaPreviews.0}">
+	<f:then>
+		<article 
+			class="swiper-slide news-slider__item" 
+			style="background-image:url({f:uri.image(src: '{newsItem.mediaPreviews.0.uid}', treatIdAsReference: 1, width: '1600c')});"
+		>
+	</f:then>
+	<f:else>
+		<article class="swiper-slide news-slider__item">
+	</f:else>	
+</f:if>
+  <div>
+    <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+    	<h1>{newsItem.title}</h1>
+    </n:link>
+	<n:removeMediaTags>
+		<f:if condition="{newsItem.teaser}">
+			<f:then>
+				<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+					{newsItem.teaser -> f:format.crop(maxCharacters: '25', respectWordBoundaries:'1') -> f:format.html()}
+				</n:link>
+			</f:then>
+			<f:else>
+				<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+					{newsItem.bodytext -> f:format.crop(maxCharacters: '25', respectWordBoundaries:'1') -> f:format.html()}
+				</n:link>
+			</f:else>
+		</f:if>
+	</n:removeMediaTags>
+  </div>
+</article>
+</html>
+
+

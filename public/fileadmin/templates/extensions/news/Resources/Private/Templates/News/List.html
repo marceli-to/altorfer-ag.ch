@@ -1,0 +1,28 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="General" />
+<f:section name="content">
+	<!--TYPO3SEARCH_end-->
+	<f:comment>News listing home</f:comment>
+	<f:if condition="{settings.templateLayout} == 97">
+		<f:if condition="{news}">
+			<f:then>
+				<div class="swiper-container news-slider js-slider-news">
+					<div class="swiper-wrapper">
+						<f:for each="{news}" as="newsItem" iteration="i">
+							<f:render partial="List/Slideshow" arguments="{newsItem: newsItem,settings:settings,iterator:i}" />
+						</f:for>
+					</div>
+				    <div class="btns-prev-next btns-prev-next--home">
+			          <div class="btn btn--prev"></div>
+			          <div class="btn btn--next"></div>
+			        </div>
+			    </div>
+			</f:then>
+			<f:else>
+				<p class="no-news-entries no-news-entries--listing">There are no news entries available.</p>
+			</f:else>
+		</f:if>
+	</f:if>
+	<!--TYPO3SEARCH_begin-->
+</f:section>
+</html>

@@ -1,0 +1,17 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<div class="contact">
+	<div class="grid-contact">
+	  <div class="span article" data-match>
+	    <h1>{field.title}</h1>
+		<f:format.html>{field.text}</f:format.html>
+	    <p>
+	      <a href="tel:{field.phone}" class="icon-contact icon-contact--phone"></a>
+	      <a href="mailto:{field.email}" class="icon-contact icon-contact--mail"></a>
+	    </p>
+	  </div>
+	  <div class="span map" id="map" data-match></div>
+	</div>
+</div>
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script><link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' /><script>mapboxgl.accessToken="pk.eyJ1IjoibWFyY2VsaXRvb29vIiwiYSI6ImNrMHNsdmhwdjAzcjIzZ3BldTlqdWhnaWEifQ.EWZE383Tn4xBt0E5pSXh6Q";var map=new mapboxgl.Map({container:"map",style:"mapbox://styles/marcelitoooo/ck16ms7m51nlo1cmwnqrbjuyq",center:[8.585948,47.358518],zoom:13});map.addControl(new mapboxgl.NavigationControl);var geojson={type:"FeatureCollection",features:[{type:"Feature",geometry:{type:"Point",coordinates:[8.585964,47.358735]},properties:{title:"Peter Kaelin Architekten",description:"Zürich"}}]};geojson.features.forEach(function(e){var o=document.createElement("div");o.className="marker",new mapboxgl.Marker(o).setLngLat(e.geometry.coordinates).addTo(map)});</script>
+
+

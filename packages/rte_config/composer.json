@@ -1,0 +1,24 @@
+{
+    "name": "jamondigital/rte-config",
+    "type": "typo3-cms-extension",
+    "description": "Configuration for RTE",
+    "authors": [
+        {
+            "name": "Marcel Stadelmann",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+      "typo3/cms-core": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "JamonDigital\\RteConfig\\": "Classes"
+        }
+    },
+    "extra": {
+      "typo3/cms": {
+         "extension-key": "rte_config"
+      }
+   }
+}

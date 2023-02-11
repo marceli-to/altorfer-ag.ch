@@ -1,0 +1,17 @@
+
+<section class="box-text">
+  <div class="grid-teaser">
+	<f:for each="{field.teasers}" as="teaser">
+	    <figure class="span teaser">
+			<f:for each="{teaser.image}" as="img">
+				<f:image image="{img}" alt="" width="800c" height="1000c" />
+			</f:for>
+			<figcaption>
+				<div>
+					<f:format.html>{teaser.links}</f:format.html>
+				</div>
+			</figcaption>
+	    </figure>
+	</f:for>
+  </div>
+</section>

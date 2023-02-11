@@ -1,0 +1,10 @@
+
+<div>
+ <strong>{field.title}</strong><br>
+ <f:if condition="{field.text}">
+ 	<f:format.html>{field.text}</f:format.html>
+ </f:if>
+ <hr style="height: 1px; line-height: 1; background-color: #ddd; width: 100%; padding: 0; margin: 10px 0;">
+ Ausrichtung: {f:if(condition: '{field.orientation} == "0"', then: 'Links', else: 'Rechts')}
+</div>
+

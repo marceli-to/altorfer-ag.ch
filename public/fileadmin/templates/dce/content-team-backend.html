@@ -1,0 +1,15 @@
+
+<strong>{field.department}</strong>
+<hr style="height: 1px; line-height: 1; background-color: #ddd; width: 100%; padding: 0; margin: 10px 0;">
+<div style="display: grid; grid-template-columns: repeat(6, 1fr); grid-gap: 10px">
+<f:for each="{field.members}" as="member">
+    <figure>
+		<f:for each="{member.image}" as="img">
+			<f:image image="{img}" alt="Thumbnail" maxWidth="150" maxHeight="150" />
+		</f:for>
+		<figcaption style="display: block; margin-top: 5px">
+			{member.firstname} {member.name}
+		</figcaption>
+    </figure>
+</f:for>
+</div>

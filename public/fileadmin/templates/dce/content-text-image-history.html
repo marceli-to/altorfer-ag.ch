@@ -1,0 +1,57 @@
+
+<f:if condition="{field.orientation} == 'is-rtl'">
+	<f:then>
+		<section class="box-text-media {field.theme} {field.offset} is-rtl" {f:if(condition: '{field.anchor}', then: 'data-anchor="{field.anchor}"')}>
+		  <div class="text-media__content">
+		    <div>
+			  <f:if condition="{field.title}">
+		      	<h1>{field.title}</h1>
+		      </f:if>
+		      <f:if condition="{field.text}">
+		      	<f:format.html>{field.text}</f:format.html>
+		      </f:if>
+		      <div class="timeline">
+			      <f:for each="{field.years}" as="entry">
+				      <div>
+				      	<span class="timeline__year">{entry.year}</span>
+				      	<span class="timeline__entry">{entry.text}</span>
+				      </div>
+			      </f:for>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="text-media__image">
+		    <figure>
+				<f:for each="{field.image}" as="img">
+					<img src="{f:uri.image(src: '{img.uid}', treatIdAsReference: 1)}" width="592" height="379">
+				</f:for>
+			</figure>
+		  </div>
+		</section>
+	</f:then>
+	<f:else>
+		<section class="box-text-media {field.theme} {field.offset} is-ltr" {f:if(condition: '{field.anchor}', then: 'data-anchor="{field.anchor}"')}>
+		  <div class="text-media__image">
+		    <figure>
+				<f:for each="{field.image}" as="img">
+					<img src="{f:uri.image(src: '{img.uid}', treatIdAsReference: 1)}" width="592" height="379">
+				</f:for>
+		    </figure>
+		  </div>
+		  <div class="text-media__content">
+		    <div>
+			  <f:if condition="{field.title}">
+		      	<h1>{field.title}</h1>
+		      </f:if>
+		      <f:if condition="{field.text}">
+		      	<f:format.html>{field.text}</f:format.html>
+		      </f:if>
+		    </div>
+		  </div>	
+		</section>
+	</f:else>
+</f:if>
+
+
+
+
