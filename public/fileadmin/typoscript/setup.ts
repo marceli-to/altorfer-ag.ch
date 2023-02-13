@@ -8,3 +8,7 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/typoscript/Page/HeaderData/setup.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/typoscript/Page/IncludeCss/setup.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/typoscript/Page/setup.ts">
+
+plugin.tx_news {
+  settings.hidePagination = 1
+}

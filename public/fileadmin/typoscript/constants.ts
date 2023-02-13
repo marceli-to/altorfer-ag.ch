@@ -34,3 +34,13 @@ styles {
         }
     }
 }
+
+plugin.tx_news {
+
+	view {
+		templateRootPath = fileadmin/templates/extensions/news/Resources/Private/Templates/
+		partialRootPath  = fileadmin/templates/extensions/news/Resources/Private/Partials/
+		layoutRootPath 	 = fileadmin/templates/extensions/news/Resources/Private/Layouts/
+	}
+
+}

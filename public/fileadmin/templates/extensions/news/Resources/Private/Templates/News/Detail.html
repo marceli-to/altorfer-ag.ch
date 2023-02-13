@@ -3,11 +3,31 @@
 <f:section name="content">
 	<f:if condition="{newsItem}">
 		<f:then>
-    		<f:render partial="Detail/Article" arguments="{newsItem: newsItem, newsRecords: newsRecords, settings:settings}" />
+		
+			<section class="box-text-media is-rtl">
+			  <div class="text-media__content">
+			    <div>
+			      <h1>{newsItem.title}</h1>
+				  <f:format.html>{newsItem.bodytext}</f:format.html>
+				  <div class="backlink">
+					  <f:link.page pageUid="{settings.backPid}">zurück</f:link.page>
+				  </div>
+			    </div>
+			  </div>
+			  <div class="text-media__image">
+			    <figure>
+					<f:render partial="Detail/MediaContainer" arguments="{media: newsItem.mediaNonPreviews, settings:settings}" />
+				</figure>
+			  </div>
+			</section>		
+			
+		
+		
+		
+		
+		
+			
 		</f:then>
-		<f:else>
-    		<f:render partial="Detail/Article" arguments="{newsItem: newsRecords.0, newsRecords: newsRecords, settings:settings}" />		
-		</f:else>
 	</f:if>
 </f:section>
 </html>
