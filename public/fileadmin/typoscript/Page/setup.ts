@@ -52,6 +52,7 @@ page {
 			
 			# seo
 			# seoBlock < lib.jdMetaOg
+      pageTitle < lib.pageTitle
 		
 			# content - general
 			contentBlock < lib.contentBlock

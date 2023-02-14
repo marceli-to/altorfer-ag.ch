@@ -8,4 +8,11 @@ lib.pagePid.data = page:pid
 
 # Language Key - English
 lib.languageKey = TEXT
-lib.languageKey.value = en
+lib.languageKey.value = de
+
+# Set page title
+lib.pageTitle = TEXT
+lib.pageTitle {
+	field = subtitle // title
+	noTrimWrap = |<title>| - Altorfer AG Metallbau – Ihr Spezialist für Metallbau</title>|	
+}
