@@ -24,16 +24,16 @@ plugin.tx_jdogmeta_jdogmeta {
     
     settings {
 	    # Site name
-	    siteName = Altorfer AG Metallbau
+	    siteName = HR Glas
 	    	    
 	    # Suffix for page title
-	    pageTitleSuffix = Altorfer AG Metallbau
+	    pageTitleSuffix = HR Glas
 	    
 	    # default open graph image
 	    defaultOpenGraphImage = /fileadmin/assets/img/og.jpg
 	    
 	    # default meta description
-	    defaultMetaDescription = Ihr Partner bei der Planung und Realisierung von Metallbauprojekten in Stahl, Aluminium und CNS - seit 1954.
+	    defaultMetaDescription = Ihr Spezialist für rahmenlose Glas-Duschen nach Mass in Zürich
     }
 }
 

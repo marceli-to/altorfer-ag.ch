@@ -1,18 +1,18 @@
-temp.jdMetaOg = USER
-temp.jdMetaOg {
-    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-    extensionName = JdOgmeta
-    pluginName = Jdogmeta
-    vendorName = Jamondigital
-    controller = Main
-    action = set
-    view < plugin.tx_jdogmeta_jdogmeta.view
-    persistence < plugin.tx_jdogmeta_jdogmeta.persistence
-    settings < plugin.tx_jdogmeta_jdogmeta.settings
-}
+# temp.jdMetaOg = USER
+# temp.jdMetaOg {
+#     userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+#     extensionName = JdOgmeta
+#     pluginName = Jdogmeta
+#     vendorName = Jamondigital
+#     controller = Main
+#     action = set
+#     view < plugin.tx_jdogmeta_jdogmeta.view
+#     persistence < plugin.tx_jdogmeta_jdogmeta.persistence
+#     settings < plugin.tx_jdogmeta_jdogmeta.settings
+# }
 
-lib.jdMetaOg = COA
-lib.jdMetaOg < temp.jdMetaOg
+# lib.jdMetaOg = COA
+# lib.jdMetaOg < temp.jdMetaOg
 
 
 page = PAGE
@@ -51,7 +51,7 @@ page {
 			menuMain < menu.menuMain
 			
 			# seo
-			seoBlock < lib.jdMetaOg
+			# seoBlock < lib.jdMetaOg
 		
 			# content - general
 			contentBlock < lib.contentBlock

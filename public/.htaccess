@@ -24,10 +24,6 @@
 ####
 
 
-RewriteEngine On
-# RewriteCond %{HTTPS} off
-# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
 ### Begin: Compression ###
 
 # Compressing resource files will save bandwidth and so improve loading speed especially for users
@@ -99,7 +95,7 @@ RewriteEngine On
 	</IfModule>
 
 	<IfModule mod_mime.c>
-		AddEncoding gzip svgz
+		AddEncoding gzip              svgz
 	</IfModule>
 </IfModule>
 
@@ -260,6 +256,16 @@ AddDefaultCharset utf-8
 ### Begin: Rewriting and Access ###
 
 # You need rewriting, if you use a URL-Rewriting extension (RealURL, CoolUri).
+<IfModule mod_rewrite.c>
+      # Enable URL rewriting
+    RewriteEngine On
+    RewriteRule ^(?:fileadmin/|typo3conf/|typo3temp/|uploads/) - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteCond %{REQUEST_URI} ^/typo3/.*$
+    RewriteRule ^typo3/(.*)$ %{ENV:CWD}typo3/index.php [QSA,L]
+</IfModule>
 
 <IfModule mod_rewrite.c>
 
@@ -270,6 +276,8 @@ AddDefaultCharset utf-8
 	# mod_rewrite in .htaccess files without knowing the RewriteBase
 	RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
 	RewriteRule ^.*$ - [E=CWD:%2]
+
+
 
 	# Rules to set ApplicationContext based on hostname
 	#RewriteCond %{HTTP_HOST} ^dev\.example\.com$
@@ -290,7 +298,7 @@ AddDefaultCharset utf-8
 	# Access block for folders
 	RewriteRule _(?:recycler|temp)_/ - [F]
 	RewriteRule fileadmin/templates/.*\.(?:txt|ts)$ - [F]
-	RewriteRule ^(?:vendor|typo3_src|typo3temp/var) - [F]
+	RewriteRule ^(?:vendor|typo3_src|typo3temp/logs) - [F]
 	RewriteRule (?:typo3conf/ext|typo3/sysext|typo3/ext)/[^/]+/(?:Configuration|Resources/Private|Tests?|Documentation|docs?)/ - [F]
 
 	# Block access to all hidden files and directories with the exception of
@@ -314,20 +322,19 @@ AddDefaultCharset utf-8
 </IfModule>
 
 # Access block for files
-# Apache < 2.3
-<IfModule !mod_authz_core.c>
-	<FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|rc)|.*~)$">
+<FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sw[op]|git.*)|.*(?:~|rc))$">
+	# Apache < 2.3
+	<IfModule !mod_authz_core.c>
 		Order allow,deny
 		Deny from all
 		Satisfy All
-	</FilesMatch>
-</IfModule>
-# Apache ≥ 2.3
-<IfModule mod_authz_core.c>
-	<If "%{REQUEST_URI} =~ m#(?i:/\.|/\x23.*\x23|/(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|/composer\.(?:json|lock)|/ext_conf_template\.txt|/ext_typoscript_constants\.txt|/ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|rc)|.*~)$#">
+	</IfModule>
+
+	# Apache ≥ 2.3
+	<IfModule mod_authz_core.c>
 		Require all denied
-	</If>
-</IfModule>
+	</IfModule>
+</FilesMatch>
 
 # Block access to vcs directories
 <IfModule mod_alias.c>
